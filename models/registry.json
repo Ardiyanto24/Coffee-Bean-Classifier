@@ -1,0 +1,32 @@
+{
+  "active_model": "baseline/EfficientNetB0",
+  "models": {
+    "baseline/EfficientNetB0": {
+      "phase": "baseline",
+      "backbone": "EfficientNetB0",
+      "onnx_path": "models/baseline/EfficientNetB0.onnx",
+      "keras_path": "models/baseline/EfficientNetB0.keras",
+      "input_size": [224, 224],
+      "class_names": ["defect", "longberry", "peaberry", "premium"],
+      "class_to_idx": {
+        "defect": 0,
+        "longberry": 1,
+        "peaberry": 2,
+        "premium": 3
+      },
+      "metrics": {
+        "test_accuracy": null,
+        "test_f1_macro": null,
+        "test_precision_macro": null,
+        "test_recall_macro": null,
+        "test_roc_auc_macro": null
+      },
+      "training_date": null,
+      "notes": "Baseline model — frozen backbone, no augmentation, no hyperparameter tuning"
+    },
+    "tuned/placeholder": {
+      "phase": "tuned",
+      "notes": "Placeholder — akan diisi setelah Hyperparameter Tuning selesai"
+    }
+  }
+}

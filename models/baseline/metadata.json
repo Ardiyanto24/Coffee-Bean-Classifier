@@ -1,0 +1,62 @@
+{
+  "model_name": "EfficientNetB0",
+  "phase": "baseline",
+  "version": "baseline-v1.0",
+
+  "architecture": {
+    "backbone": "EfficientNetB0",
+    "backbone_weights": "imagenet",
+    "backbone_trainable": false,
+    "head": "GlobalAveragePooling2D → Dense(4, softmax)",
+    "input_size": [224, 224, 3],
+    "num_classes": 4,
+    "class_names": ["defect", "longberry", "peaberry", "premium"],
+    "class_to_idx": {
+      "defect": 0,
+      "longberry": 1,
+      "peaberry": 2,
+      "premium": 3
+    }
+  },
+
+  "training": {
+    "training_date": null,
+    "epochs_trained": null,
+    "batch_size": 32,
+    "learning_rate": 0.001,
+    "optimizer": "Adam",
+    "loss": "sparse_categorical_crossentropy",
+    "callbacks": [
+      "EarlyStopping(patience=5, monitor=val_loss)",
+      "ModelCheckpoint(save_best_only=True)",
+      "ReduceLROnPlateau(factor=0.5, patience=3)"
+    ],
+    "augmentation": false,
+    "notes": "Baseline — frozen backbone, no augmentation, no hyperparameter tuning"
+  },
+
+  "preprocessing": {
+    "normalization": "EfficientNet standard — (pixel / 127.5) - 1.0 → range [-1, 1]",
+    "duplicate_removal": "MD5 exact-dup + pHash near-dup (Hamming <= 4)",
+    "split_strategy": "Group-Aware Stratified Split (70/15/15)"
+  },
+
+  "metrics": {
+    "test_accuracy": null,
+    "test_f1_macro": null,
+    "test_precision_macro": null,
+    "test_recall_macro": null,
+    "test_roc_auc_macro": null,
+    "per_class": {
+      "defect":    { "f1": null, "precision": null, "recall": null },
+      "longberry": { "f1": null, "precision": null, "recall": null },
+      "peaberry":  { "f1": null, "precision": null, "recall": null },
+      "premium":   { "f1": null, "precision": null, "recall": null }
+    }
+  },
+
+  "artifacts": {
+    "keras_path": "models/baseline/EfficientNetB0.keras",
+    "onnx_path": "models/baseline/EfficientNetB0.onnx"
+  }
+}
