@@ -33,6 +33,11 @@ scipy==1.15.2
 # Image processing tambahan (preprocessing — pHash fallback)
 opencv-python==4.11.0.86
 
+# PyTorch — hanya untuk validasi preprocessing (sanity check DataLoader)
+# Tidak dipakai di training pipeline (training menggunakan TF/Keras)
+torch==2.6.0
+torchvision==0.21.0
+
 # Notebook support
 ipykernel==6.29.5
 ipywidgets==8.1.5
