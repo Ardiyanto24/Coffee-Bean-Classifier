@@ -27,16 +27,11 @@ seaborn==0.13.2
 # Progress bar
 tqdm==4.67.1
 
-# Perceptual hashing (preprocessing — duplicate detection)
-scipy==1.15.2
+# Perceptual hashing — digunakan oleh DuplicateDetector
+imagehash==4.3.1
 
-# Image processing tambahan (preprocessing — pHash fallback)
+# Image processing
 opencv-python==4.11.0.86
-
-# PyTorch — hanya untuk validasi preprocessing (sanity check DataLoader)
-# Tidak dipakai di training pipeline (training menggunakan TF/Keras)
-torch==2.6.0
-torchvision==0.21.0
 
 # Notebook support
 ipykernel==6.29.5

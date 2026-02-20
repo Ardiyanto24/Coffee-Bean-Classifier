@@ -7,6 +7,56 @@ warnings.filterwarnings('ignore')
 logging.basicConfig(level=logging.INFO, format='[%(levelname)s] %(message)s')
 
 
+# ==============================================================================
+# PreprocessingConfig
+# Digunakan oleh: notebooks/01_preprocessing.ipynb
+#                 src/data/preprocessing.py
+# ==============================================================================
+
+@dataclass
+class PreprocessingConfig:
+    """
+    Configuration dataclass for the preprocessing pipeline.
+    All pipeline classes read their parameters from this object.
+
+    Notes
+    -----
+    - phash_hash_size=8 produces a 64-bit hash (8x8 DCT grid), which is the
+      standard for perceptual hashing. Increasing this value raises sensitivity
+      but also computation time.
+    - phash_threshold=4 is the standard Hamming distance cutoff for 64-bit pHash.
+      Images with distance <= 4 are considered near-duplicates.
+    """
+
+    # --- Data paths (wajib diisi, tidak ada default path Kaggle) ---
+    metadata_path:  str = ""
+    image_base_dir: str = ""
+
+    # --- Duplicate detection settings ---
+    phash_hash_size: int = 8    # 8x8 DCT grid → 64-bit hash
+    phash_threshold: int = 4    # Hamming distance <= 4 → near-duplicate
+
+    # --- Split settings ---
+    val_size:     float = 0.15
+    test_size:    float = 0.15
+    random_state: int   = 42
+
+    # --- Column names ---
+    path_col:  str = 'filepath'
+    label_col: str = 'label'
+
+    # --- Output settings ---
+    save_splits: bool = True
+    output_dir:  str  = ""
+
+
+# ==============================================================================
+# BaselineConfig
+# Digunakan oleh: notebooks/02_modeling_baseline.ipynb
+#                 src/training/trainer.py
+#                 src/training/evaluator.py
+# ==============================================================================
+
 @dataclass
 class BaselineConfig:
     """
@@ -24,17 +74,17 @@ class BaselineConfig:
     """
 
     # --- Data paths (wajib diisi, tidak ada default path Kaggle) ---
-    train_csv:  str = ""
-    val_csv:    str = ""
-    test_csv:   str = ""
+    train_csv: str = ""
+    val_csv:   str = ""
+    test_csv:  str = ""
 
     # --- Dataset settings ---
     num_classes:  int       = 4
     class_names:  List[str] = field(default_factory=lambda: [
         'defect', 'longberry', 'peaberry', 'premium'
     ])
-    path_col:     str       = 'filepath'
-    label_col:    str       = 'encoded_label'
+    path_col:  str = 'filepath'
+    label_col: str = 'encoded_label'
 
     # --- Model selection ---
     models_to_train: List[str] = field(default_factory=lambda: [
