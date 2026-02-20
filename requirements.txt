@@ -1,0 +1,16 @@
+# ============================================================
+# requirements.txt — Production / Deployment
+# Digunakan oleh: Docker, Streamlit app
+# ============================================================
+
+# Inference engine
+onnxruntime==1.21.0
+
+# Web app
+streamlit==1.42.0
+
+# Image processing
+Pillow==11.1.0
+
+# Numerical computation
+numpy==2.2.3

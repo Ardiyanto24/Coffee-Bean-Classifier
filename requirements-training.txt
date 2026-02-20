@@ -1,0 +1,38 @@
+# ============================================================
+# requirements-training.txt — Training / Notebook
+# Digunakan oleh: Kaggle notebook, training pipeline lokal
+# Extends: requirements.txt
+# ============================================================
+
+# Include semua production dependencies
+-r requirements.txt
+
+# Deep learning framework
+tensorflow==2.19.0
+
+# ONNX export dari Keras
+tf2onnx==1.16.1
+onnx==1.17.0
+
+# Data manipulation
+pandas==2.2.3
+
+# Machine learning utilities
+scikit-learn==1.6.1
+
+# Visualization
+matplotlib==3.10.1
+seaborn==0.13.2
+
+# Progress bar
+tqdm==4.67.1
+
+# Perceptual hashing (preprocessing — duplicate detection)
+scipy==1.15.2
+
+# Image processing tambahan (preprocessing — pHash fallback)
+opencv-python==4.11.0.86
+
+# Notebook support
+ipykernel==6.29.5
+ipywidgets==8.1.5
