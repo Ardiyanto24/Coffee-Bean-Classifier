@@ -6,7 +6,7 @@ models/baseline/*.onnx
 models/tuned/
 
 # Data & artifacts
-data/
+/data/
 artifacts_preprocess/
 
 # Python
