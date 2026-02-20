@@ -1,0 +1,33 @@
+# Buat .gitignore dulu sebelum add (penting!)
+cat > .gitignore << 'EOF'
+# Model artifacts
+models/baseline/*.keras
+models/baseline/*.onnx
+models/tuned/
+
+# Data & artifacts
+data/
+artifacts_preprocess/
+
+# Python
+__pycache__/
+*.pyc
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment
+.env
+venv/
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+EOF
