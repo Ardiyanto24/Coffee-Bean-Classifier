@@ -1,9 +1,5 @@
 # Buat .gitignore dulu sebelum add (penting!)
 cat > .gitignore << 'EOF'
-# Model artifacts
-models/baseline/*.keras
-models/baseline/*.onnx
-models/tuned/
 
 # Data & artifacts
 /data/
